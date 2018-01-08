@@ -46,12 +46,44 @@ struct fsm_transition
   int8_t (*func)(struct fsm *instance);
 };
 
+/**
+ * @brief Initialize the state machine given by \c instance.
+ * This must be called before \c FSM_update can be used.
+ * @param[in,out] instance - FSM instance
+ * @param[in] starte_state - State that \c instance will be initialized to.
+ * @param[in] starte_event - Event that \c instance will be initialized to.
+ */
 FSM_retval FSM_init(struct fsm *instance, int8_t start_state, int8_t start_event);
+
+/**
+ * @brief Update the state machine state. This will trigger a state
+ * change that depends on the internal state and given event
+ * @param[in,out] instance - FSM instance
+ * @return FSM_error - If there is no state defined for the current event transition.
+ */
 FSM_retval FSM_update(struct fsm *instance, int8_t *new_state);
 
+/**
+ * @brief Return the current state of the FSM
+ * @param[in,out] instance - FSM instance
+ * @return FSM state
+ */
 int8_t FSM_get_current_state(const struct fsm *instance);
 
+/**
+ * @brief Returns the currently set external event.
+ * @param[in,out] instance - FSM instance
+ * @param[out] event - external event
+ */
+
 FSM_retval FSM_get_external_event(const struct fsm *instance, int8_t *event);
+
+/**
+ * @brief Set an external event that will be used on the next possible transition.
+ * @param[in,out] instance - FSM instance
+ * @param[out] event - external event
+ */
+
 FSM_retval FSM_set_external_event(struct fsm *instance, int8_t event);
 
 #endif /* INCLUDE_FSM_H */
