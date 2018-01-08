@@ -1,5 +1,7 @@
 # Finite State Machine
 
+[![Build Status](https://travis-ci.org/AsymmetricBit/finitestatemachine.svg?branch=master)](https://travis-ci.org/AsymmetricBit/finitestatemachine)
+
 Copyright (c) 2017, 2018 Andre Eggert (eggert dot andre at gmail.com)
 
 ## Introduction
